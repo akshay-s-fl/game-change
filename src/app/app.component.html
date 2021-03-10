@@ -1,0 +1,150 @@
+<!-- main app container -->
+<div class="card m-3">
+  <h5 class="card-header">Welcome to Game Change</h5>
+  <div class="card-body">
+    <form [formGroup]="registerForm">
+      <div class="form-row">
+        <div class="form-group col">
+          <label>Character Name</label>
+          <input type="text" formControlName="characterName" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.characterName.errors }" />
+          <div *ngIf="submitted && f.characterName.errors" class="invalid-feedback">
+            <div *ngIf="f.characterName.errors.required">Character Name is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <!-- Strength Value -->
+        <div class="form-group col">
+          <label>Strength</label>
+          <input type="number" formControlName="strength" class="form-control" min="0" max="100"
+            [ngClass]="{ 'is-invalid': submitted && f.strength.errors }"
+            (input)="onChangeStrength($event.target.value)" />
+          <div *ngIf="submitted && f.strength.errors" class="invalid-feedback">
+            <div *ngIf="f.strength.errors.required">Strength is required</div>
+          </div>
+        </div>
+
+        <!-- Dexterity Value -->
+        <div class="form-group col">
+          <label>Dexterity</label>
+          <input type="number" formControlName="dexterity" class="form-control" min="0" max="100"
+            (input)="onChangeDexterity($event.target.value)"
+            [ngClass]="{ 'is-invalid': submitted && f.dexterity.errors }" />
+          <div *ngIf="submitted && f.dexterity.errors" class="invalid-feedback">
+            <div *ngIf="f.dexterity.errors.required">Dexterity is required</div>
+          </div>
+        </div>
+
+        <!-- Mind Value -->
+        <div class="form-group col">
+          <label>Mind</label>
+          <input type="number" formControlName="mind" class="form-control" min="0" max="100"
+            (input)="onChangeMind($event.target.value)" [ngClass]="{ 'is-invalid': submitted && f.mind.errors }" />
+          <div *ngIf="submitted && f.mind.errors" class="invalid-feedback">
+            <div *ngIf="f.mind.errors.required">Mind is required</div>
+          </div>
+        </div>
+
+        <!-- Presense Value -->
+        <div class="form-group col">
+          <label>Presence</label>
+          <input type="number" formControlName="presence" class="form-control" min="0" max="100"
+            (input)="onChangePresence($event.target.value)"
+            [ngClass]="{ 'is-invalid': submitted && f.presence.errors }" />
+          <div *ngIf="submitted && f.presence.errors" class="invalid-feedback">
+            <div *ngIf="f.presence.errors.required">Presence is required</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card m-1">
+        <h5 class="card-header">Sub - Skills</h5>
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group col" *ngFor="let skills of skillsData; let skillIndex = index">
+              <div *ngFor="let subSkills of skills.subdata; let subSkillIndex = index">
+                <div class="form-row">
+                  <h6>{{subSkills.skill}} &nbsp; &nbsp; </h6>
+                  <h6 *ngIf="skillArray && skillArray.length && skillArray[skillIndex] && showSkillArray">
+                    {{skillArray[skillIndex][subSkillIndex]}}
+                  </h6>
+                </div>
+                <h6>
+                  <i> Rank : {{getRankValue(skillIndex, subSkillIndex)}}</i>
+                </h6>
+
+                <button (click)="getSkillValue(skillIndex, subSkillIndex)"> Get Skill Value</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card m-1">
+        <h5 class="card-header">Combat Attributes</h5>
+        <div class="card-body">
+          <div class="form-row">
+            <div class="form-group col">
+              <div class="form-row">
+                <h4> Vitality </h4>
+                <h4>
+                  : {{getVitalityValue(registerForm.value.strength)}}
+                </h4>
+              </div>
+            </div>
+            <div class="form-group col">
+              <div class="form-row">
+                <h4> Evasion </h4>
+                <h4>
+                  : {{getEvasionValue(registerForm.value.dexterity)}}
+                </h4>
+              </div>
+            </div>
+            <div class="form-group col">
+              <div class="form-row">
+                <h4> Armor </h4>
+                <h4 class="text-center">
+                  : {{getArmorValue(registerForm.value.dexterity)}}
+                </h4>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col">
+              <div class="form-row">
+                <h4> Alacrity </h4>
+                <h4 class="text-center">
+                  : {{getAlacrityValue(registerForm.value.dexterity, registerForm.value.mind)}}
+                </h4>
+              </div>
+            </div>
+            <div class="form-group col">
+              <div class="form-row">
+                <h4> Tenacity </h4>
+                <h4 class="text-center">
+                  : {{getTenacityValue(registerForm.value.presence)}}
+                </h4>
+              </div>
+            </div>
+            <div class="form-group col">
+              <div class="form-row">
+                <h4> Power </h4>
+                <h4 class="text-center">
+                  : 0
+                </h4>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="text-center m-3">
+            <button class="btn btn-danger mr-1" (click)="addDamage()"> Damage </button>
+          </div> -->
+        </div>
+      </div>
+      <div class="text-center m-3">
+        <button class="btn btn-primary mr-1" (click)="onExport()">Export</button>
+      </div>
+    </form>
+  </div>
+</div>

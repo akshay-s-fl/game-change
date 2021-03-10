@@ -1,0 +1,84 @@
+{
+    "data": [
+        {
+            "title": "Strength",
+            "subdata": [
+                {
+                    "skill": "Fighting",
+                    "value": "Untrained"
+                }
+            ]
+        },
+        {
+            "title": "Dexterity",
+            "subdata": [
+                {
+                    "skill": "Fighting",
+                    "value": "Untrained"
+                },
+                {
+                    "skill": "Thievery",
+                    "value": "Untrained"
+                },
+                {
+                    "skill": "Stealth",
+                    "value": "Untrained"
+                },
+                {
+                    "skill": "Archery",
+                    "value": "Untrained"
+                }
+            ]
+        },
+        {
+            "title": "Mind",
+            "subdata": [
+                {
+                    "skill": "Learned",
+                    "value": "Untrained"
+                },
+                {
+                    "skill": "Survival",
+                    "value": "Untrained"
+                },
+                {
+                    "skill": "Perception",
+                    "value": "Untrained"
+                },
+                {
+                    "skill": "Apothecary",
+                    "value": "Untrained"
+                },
+                {
+                    "skill": "Power",
+                    "value": "Untrained"
+                }
+            ]
+        },
+        {
+            "title": "Presence",
+            "subdata": [
+                {
+                    "skill": "Intimidation",
+                    "value": "Untrained"
+                },
+                {
+                    "skill": "Performance",
+                    "value": "Untrained"
+                },
+                {
+                    "skill": "Manipulation",
+                    "value": "Untrained"
+                },
+                {
+                    "skill": "Insight",
+                    "value": "Untrained"
+                },
+                {
+                    "skill": "Power",
+                    "value": "Untrained"
+                }
+            ]
+        }
+    ]
+}
